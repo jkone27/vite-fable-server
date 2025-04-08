@@ -22,6 +22,7 @@ A quick template for building an Express.js server with Fable (F#) using Vite fo
 - ✅ Write your server logic in F# `.fs` - transparently 
 - ❌ HMR with vite and node.js (not working, help >>> fix this)
 - ❌ vitest unit tests (not working, help >>> fix this)
+- 💡 TODO: add [supertest](https://www.npmjs.com/package/supertest) support ?>
 
 ## Getting Started 🏃🏽
 
