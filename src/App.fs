@@ -1,22 +1,26 @@
-﻿open Fable.Core
+﻿namespace App
+
+open Fable.Core
 open Glutinum.Express
 open Glutinum.ExpressServeStaticCore
 
-let port = 3000
-let app = express.express()
+module Server = 
 
-app.get ("/", fun (req: Request) (res: Response) ->
-    printfn $"New request, %s{req.hostname}"
-    res.send "Hello ExpressJS!"
-)
+    let port = 3000
+    let app = express.express()
 
-[<Emit("import.meta.env.PROD")>]
-let isProd: bool = jsNative
+    app.get ("/", fun (req: Request) (res: Response) ->
+        printfn $"New request, %s{req.hostname}"
+        res.send "Hello World!"
+    )
 
-// in development mode, the server is started by vite
-if isProd then
-    app.listen(port, fun () -> 
-        printfn $"Production server started on port {port}"
-    ) |> ignore
+    [<Emit("import.meta.env.PROD")>]
+    let isProd: bool = jsNative
 
-let viteNodeApp = app
+    // in development mode, the server is started by vite
+    if isProd then
+        app.listen(port, fun () -> 
+            printfn $"Production server started on port {port}"
+        ) |> ignore
+
+    let viteNodeApp = app
